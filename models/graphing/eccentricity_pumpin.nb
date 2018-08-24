@@ -1,0 +1,3072 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    161159,       3064]
+NotebookOptionsPosition[    157304,       2999]
+NotebookOutlinePosition[    157682,       3015]
+CellTagsIndexPosition[    157639,       3012]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Get", "[", "\"\<RootSearch`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.740749244429208*^9, 
+  3.740749253369898*^9}},ExpressionUUID->"47d2ed0c-e77a-41ba-acb0-\
+8fadf8eeec2c"],
+
+Cell[BoxData[
+ RowBox[{"?", "RootSearch"}]], "Input",
+ CellChangeTimes->{{3.7407492549805527`*^9, 
+  3.740749259447613*^9}},ExpressionUUID->"3bc95c76-0a01-471f-83d6-\
+dead6f3eb7a1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Data", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"nperiods", " ", "=", "200"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Mu]", "=", 
+     RowBox[{"3.9877848", " ", 
+      SuperscriptBox["10", "14"]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Mp", "=", "1000"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"l", "=", "50000"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"a", "=", "6870000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Tau]", " ", "=", " ", 
+     RowBox[{"2", "*", 
+      SuperscriptBox["10", "7"]}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"period", " ", "=", " ", 
+     RowBox[{"2", " ", "\[Pi]", " ", 
+      RowBox[{"\[Sqrt]", 
+       RowBox[{"(", 
+        FractionBox[
+         SuperscriptBox["a", "3"], "\[Mu]"], ")"}]}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ranget", " ", "=", " ", 
+     RowBox[{"nperiods", "*", "period"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"psiQ", " ", "=", "\[Tau]"}], " ", ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Position", " ", "vectorc", " ", "and", " ", "linear", " ", "kinetic", 
+     " ", "energy", " ", 
+     RowBox[{"(", 
+      RowBox[{
+      "translation", " ", "of", " ", "centre", " ", "of", " ", "mass"}], 
+      ")"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rm", "[", "t", "]"}], " ", "=", " ", 
+     RowBox[{"(", GridBox[{
+        {
+         RowBox[{
+          RowBox[{"rc", "[", "t", "]"}], " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]},
+        {
+         RowBox[{
+          RowBox[{"rc", "[", "t", "]"}], " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]},
+        {"0"}
+       }], ")"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rp1", "[", "t", "]"}], "=", 
+     RowBox[{
+      RowBox[{"rm", "[", "t", "]"}], "+", 
+      RowBox[{"(", GridBox[{
+         {
+          RowBox[{"l", " ", 
+           RowBox[{"Cos", "[", 
+            RowBox[{
+             RowBox[{"\[Psi]", "[", "t", "]"}], "+", 
+             RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}]}]},
+         {
+          RowBox[{"l", "  ", 
+           RowBox[{"Sin", "[", 
+            RowBox[{
+             RowBox[{"\[Psi]", "[", "t", "]"}], "+", 
+             RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}]}]},
+         {"0"}
+        }], ")"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"rp2", "[", "t", "]"}], "=", 
+     RowBox[{
+      RowBox[{"rm", "[", "t", "]"}], "-", 
+      RowBox[{"(", GridBox[{
+         {
+          RowBox[{"l", " ", 
+           RowBox[{"Cos", "[", 
+            RowBox[{
+             RowBox[{"\[Psi]", "[", "t", "]"}], "+", 
+             RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}]}]},
+         {
+          RowBox[{"l", "  ", 
+           RowBox[{"Sin", "[", 
+            RowBox[{
+             RowBox[{"\[Psi]", "[", "t", "]"}], "+", 
+             RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}]}]},
+         {"0"}
+        }], ")"}]}]}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["rm", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "=", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", "t"], 
+      RowBox[{"rm", "[", "t", "]"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["rp1", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "=", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", "t"], 
+      RowBox[{"rp1", "[", "t", "]"}]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["rp2", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], "=", 
+     RowBox[{
+      SubscriptBox["\[PartialD]", "t"], 
+      RowBox[{"rp2", "[", "t", "]"}]}]}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["T", "lin"], "=", 
+     RowBox[{
+      FractionBox["1", "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{"2", "*", "Mp"}], ")"}], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{
+          SuperscriptBox["rc", "\[Prime]"], "[", "t", "]"}], "2"], "+", 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"rc", "[", "t", "]"}], "2"], 
+         SuperscriptBox[
+          RowBox[{
+           SuperscriptBox["\[Theta]", "\[Prime]"], "[", "t", "]"}], "2"]}]}], 
+       ")"}]}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Rotational", " ", "kinetic", " ", "energy", " ", 
+     RowBox[{"(", 
+      RowBox[{
+      "rotation", " ", "of", " ", "system", " ", "about", " ", "centre", " ", 
+       "of", " ", "mass"}], ")"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[Omega]", "[", "t", "]"}], "=", 
+     RowBox[{"(", GridBox[{
+        {"0"},
+        {"0"},
+        {
+         RowBox[{" ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["\[Theta]", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}], "+", 
+            RowBox[{
+             SuperscriptBox["\[Psi]", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}]}], ")"}]}]}
+       }], ")"}]}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[ImaginaryI]", "123"], "=", 
+     RowBox[{"(", GridBox[{
+        {"0", "0", "0"},
+        {"0", 
+         RowBox[{"2", " ", "Mp", " ", 
+          SuperscriptBox["l", "2"]}], "0"},
+        {"0", "0", 
+         RowBox[{"2", " ", "Mp", " ", 
+          SuperscriptBox["l", "2"]}]}
+       }], ")"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["T", "rot"], "=", 
+     RowBox[{
+      FractionBox["1", "2"], " ", 
+      RowBox[{
+       RowBox[{"Transpose", "[", 
+        RowBox[{"\[Omega]", "[", "t", "]"}], "]"}], ".", 
+       SubscriptBox["\[ImaginaryI]", "123"], ".", 
+       RowBox[{"\[Omega]", "[", "t", "]"}]}]}]}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{"T", "=", 
+     RowBox[{
+      SubscriptBox["T", "lin"], "+", 
+      SubscriptBox["T", "rot"]}]}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"(*", 
+    RowBox[{"potential", " ", "energy"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["U", "p1"], "=", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"\[Mu]", " ", "Mp"}], 
+       SqrtBox[
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"rp1", "[", "t", "]"}], "]"}], ".", 
+         RowBox[{"rp1", "[", "t", "]"}]}]]]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["U", "p2"], "=", 
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"\[Mu]", " ", "Mp"}], 
+       SqrtBox[
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"rp2", "[", "t", "]"}], "]"}], ".", 
+         RowBox[{"rp2", "[", "t", "]"}]}]]]}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"V", "=", 
+     RowBox[{
+      SubscriptBox["U", "p1"], "+", 
+      SubscriptBox["U", "p2"]}]}], ";"}], "\n", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"L", "=", 
+     RowBox[{"T", "-", "V"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eqn1", "=", 
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[PartialD]", "t"], 
+        RowBox[{
+         SubscriptBox["\[PartialD]", 
+          RowBox[{
+           SuperscriptBox["\[Psi]", "\[Prime]",
+            MultilineFunction->None], "[", "t", "]"}]], "L"}]}], "-", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", 
+         RowBox[{"\[Psi]", "[", "t", "]"}]], "L"}], "-", "psiQ"}], "]"}]}], 
+    ";"}], "\n", 
+   RowBox[{
+    RowBox[{"eqn2", " ", "=", " ", 
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[PartialD]", "t"], 
+        RowBox[{
+         SubscriptBox["\[PartialD]", 
+          RowBox[{
+           SuperscriptBox["\[Theta]", "\[Prime]",
+            MultilineFunction->None], "[", "t", "]"}]], "L"}]}], "-", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", 
+         RowBox[{"\[Theta]", "[", "t", "]"}]], "L"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eqn3", " ", "=", " ", 
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[PartialD]", "t"], 
+        RowBox[{
+         SubscriptBox["\[PartialD]", 
+          RowBox[{
+           SuperscriptBox["rc", "\[Prime]",
+            MultilineFunction->None], "[", "t", "]"}]], "L"}]}], "-", 
+       RowBox[{
+        SubscriptBox["\[PartialD]", 
+         RowBox[{"rc", "[", "t", "]"}]], "L"}]}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.740751840307481*^9, 3.740751840633217*^9}, {
+   3.7407560558625517`*^9, 3.7407560605799074`*^9}, {3.740916396044515*^9, 
+   3.7409163963307524`*^9}, 3.7409166476669283`*^9, {3.7409168883461213`*^9, 
+   3.7409168884610147`*^9}, {3.7409176941536355`*^9, 3.740917694421918*^9}, {
+   3.7409209172353888`*^9, 3.7409209173281345`*^9}, {3.740922734156894*^9, 
+   3.7409227344550548`*^9}, {3.740925129677823*^9, 3.740925139057719*^9}, {
+   3.7409272156492453`*^9, 3.7409272160082903`*^9}, {3.7409276190625973`*^9, 
+   3.740927619359841*^9}, {3.7409297963338823`*^9, 3.740929796623085*^9}, {
+   3.7409308120316677`*^9, 3.7409308125466347`*^9}, {3.7409835968142853`*^9, 
+   3.7409835972281866`*^9}, {3.740985060201964*^9, 3.740985060533077*^9}, {
+   3.7409950446982236`*^9, 
+   3.740995053038929*^9}},ExpressionUUID->"11d71ee7-f17c-40a1-9963-\
+c70825992d4c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"systemfunc", "[", "e_", "]"}], ":=", 
+  RowBox[{"(", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"psi0", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"psidsh0", " ", "=", "0"}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"r0", " ", "=", " ", 
+     RowBox[{"a", " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", "e"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"rdsh0", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"theta0", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"thetadsh0", "=", 
+     RowBox[{
+      FractionBox["1", "r0"], "*", 
+      RowBox[{"\[Sqrt]", 
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"\[Mu]", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", "e"}], ")"}]}], 
+         RowBox[{"a", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", "e"}], ")"}]}]], ")"}]}]}]}], "  ", ";", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"system", "=", 
+     RowBox[{"NDSolve", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"eqn1", "\[Equal]", "0"}], ",", 
+         RowBox[{"eqn2", "\[Equal]", "0"}], ",", 
+         RowBox[{"eqn3", "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"\[Psi]", "[", "0", "]"}], "\[Equal]", "psi0"}], ",", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[Psi]", "\[Prime]",
+            MultilineFunction->None], "[", "0", "]"}], "\[Equal]", 
+          "psidsh0"}], ",", " ", 
+         RowBox[{
+          RowBox[{"\[Theta]", "[", "0", "]"}], " ", "\[Equal]", " ", 
+          "theta0"}], ",", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["\[Theta]", "\[Prime]"], "[", "0", "]"}], 
+          "\[Equal]", "thetadsh0"}], ",", 
+         RowBox[{
+          RowBox[{"rc", "[", "0", "]"}], " ", "==", " ", "r0"}], ",", 
+         RowBox[{
+          RowBox[{
+           SuperscriptBox["rc", "\[Prime]"], "[", "0", "]"}], "==", "0"}]}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"\[Psi]", ",", "\[Theta]", ",", "rc"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "ranget"}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"MaxSteps", "\[Rule]", "\[Infinity]"}], ",", 
+       RowBox[{"AccuracyGoal", "\[Rule]", "Automatic"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"psis", "[", "t_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"\[Psi]", "[", "t", "]"}], "/.", 
+      RowBox[{"system", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"psidhs", "[", "t_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["\[Psi]", "\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}], "/.", 
+      RowBox[{"system", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"rvs", "[", "t_", "]"}], " ", ":=", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["rc", "\[Prime]"], "[", "t", "]"}], "/.", 
+      RowBox[{"system", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"as", "[", "t_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        SuperscriptBox["rc", "\[Prime]"], "\[Prime]"], "[", "t", "]"}], "/.", 
+      RowBox[{"system", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"rs", "[", "t_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"rc", "[", "t", "]"}], "/.", 
+      RowBox[{"system", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"thetas", "[", "t_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"\[Theta]", "[", "t", "]"}], "/.", 
+      RowBox[{"system", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}]}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", ")"}]}]], "Input",
+ CellChangeTimes->{{3.740749323882984*^9, 3.740749364686324*^9}, 
+   3.7407496973822517`*^9, 3.7407539611391325`*^9, {3.7409198280257483`*^9, 
+   3.7409198430485272`*^9}, {3.7409214911955214`*^9, 
+   3.740921505598209*^9}},ExpressionUUID->"7eb362dc-f22c-41da-a42d-\
+99b5ab799167"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"stddevs", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"coofmean", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"apogeegees", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"frames", " ", "=", " ", 
+    RowBox[{"{", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Print", "[", "eee", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"systemfunc", "[", "eee", "]"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"rootst", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"rootst", " ", "=", " ", 
+       RowBox[{"Append", "[", 
+        RowBox[{"rootst", ",", 
+         RowBox[{"RootSearch", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"rvs", "[", "t", "]"}], "\[Equal]", "0"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"t", ",", 
+             RowBox[{"period", "*", "n"}], ",", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"n", "+", "30"}], ")"}], "*", "period"}]}], "}"}]}], 
+          "]"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "0", ",", 
+        RowBox[{"nperiods", "-", "30"}], ",", "30"}], "}"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rootst", " ", "=", " ", 
+     RowBox[{"Flatten", "[", "rootst", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"roots", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"roots", " ", "=", " ", 
+       RowBox[{"Append", "[", 
+        RowBox[{"roots", ",", 
+         RowBox[{"t", "/.", 
+          RowBox[{"rootst", "[", 
+           RowBox[{"[", "n", "]"}], "]"}]}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "1", ",", 
+        RowBox[{"Length", "[", "rootst", "]"}]}], "}"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rvals", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"apogees", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"rvals", "=", 
+       RowBox[{"Append", "[", 
+        RowBox[{"rvals", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"roots", "[", 
+            RowBox[{"[", "n", "]"}], "]"}], ",", 
+           RowBox[{"rs", "[", 
+            RowBox[{"roots", "[", 
+             RowBox[{"[", "n", "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "1", ",", 
+        RowBox[{"Length", "[", "roots", "]"}]}], "}"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"datas", " ", "=", 
+     RowBox[{"FindClusters", "[", 
+      RowBox[{
+       RowBox[{"rvals", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "2"}], "]"}], "]"}], ",", "2"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"cluster1mean", " ", "=", " ", 
+     RowBox[{"Mean", "[", 
+      RowBox[{"datas", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"cluster2mean", " ", "=", " ", 
+     RowBox[{"Mean", "[", 
+      RowBox[{"datas", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"cluster1mean", ">", "cluster2mean"}], ",", 
+      RowBox[{
+       RowBox[{"apogees", " ", "=", " ", 
+        RowBox[{"datas", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+       RowBox[{"perigees", "=", 
+        RowBox[{"datas", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}]}], ",", 
+      RowBox[{
+       RowBox[{"apogees", "=", 
+        RowBox[{"datas", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", 
+       RowBox[{"perigees", "=", 
+        RowBox[{"datas", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"stddevs", " ", "=", " ", 
+     RowBox[{"Append", "[", 
+      RowBox[{"stddevs", ",", 
+       RowBox[{"StandardDeviation", "[", "apogees", "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"frames", " ", "=", " ", 
+     RowBox[{"Append", "[", 
+      RowBox[{"frames", ",", 
+       RowBox[{"ListPlot", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"apogees", ",", "perigees"}], "}"}], ",", 
+         RowBox[{"PlotMarkers", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"\[FilledSmallCircle]", ",", "15"}], "}"}]}], ",", 
+         RowBox[{"PlotLabel", "\[Rule]", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Apogee/Perigee Clusters\>\"", ",", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}], 
+            ",", "35"}], "]"}]}], ",", 
+         RowBox[{"AxesLabel", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\< \>\"", ",", 
+              RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}]}],
+              "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<r\>\"", ",", 
+              RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}]}],
+              "]"}]}], "}"}]}], ",", 
+         RowBox[{"LabelStyle", "\[Rule]", 
+          RowBox[{"Directive", "[", 
+           RowBox[{"Black", ",", "18", ",", 
+            RowBox[{"FontFamily", "->", "\"\<Liberation Serif\>\""}]}], 
+           "]"}]}], ",", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"{", "720", "}"}]}]}], "]"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"coofmean", "=", " ", 
+     RowBox[{"Append", "[", 
+      RowBox[{"coofmean", ",", 
+       RowBox[{"{", 
+        RowBox[{"eee", ",", 
+         RowBox[{
+          RowBox[{"StandardDeviation", "[", "apogees", "]"}], "/", 
+          RowBox[{"Mean", "[", "apogees", "]"}]}]}], "}"}]}], "]"}]}]}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"eee", ",", "0.3", ",", "0.3", ",", "0.05"}], "}"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.740749399440744*^9, 3.740749404008338*^9}, {
+   3.740750455109697*^9, 3.7407504706863875`*^9}, {3.740750510004215*^9, 
+   3.740750577223587*^9}, {3.740750615604005*^9, 3.74075066340079*^9}, {
+   3.740751153348464*^9, 3.7407511544565773`*^9}, {3.74075142233893*^9, 
+   3.7407514335665817`*^9}, {3.740751749931795*^9, 3.74075177265853*^9}, 
+   3.7407518095423803`*^9, {3.7407520028864574`*^9, 3.740752005555369*^9}, {
+   3.740752819145105*^9, 3.7407528516249638`*^9}, {3.740753298719427*^9, 
+   3.740753331618169*^9}, {3.740753448816636*^9, 3.740753502782303*^9}, {
+   3.7407539203053455`*^9, 3.740753938414892*^9}, {3.7407540006435056`*^9, 
+   3.7407540054117594`*^9}, {3.740916869816697*^9, 3.7409169008548117`*^9}, {
+   3.7409169603166122`*^9, 3.7409169728797817`*^9}, {3.740917162513056*^9, 
+   3.7409172639090223`*^9}, 3.7409173740196085`*^9, 3.740917702647924*^9, {
+   3.7409177455292683`*^9, 3.7409177455691614`*^9}, {3.7409177805137267`*^9, 
+   3.7409178058629475`*^9}, {3.7409178432449956`*^9, 
+   3.7409178445554914`*^9}, {3.7409178997200317`*^9, 3.740917908193338*^9}, {
+   3.7409182153117523`*^9, 3.740918218682987*^9}, {3.7409183793439116`*^9, 
+   3.7409184482544765`*^9}, {3.740918513488347*^9, 3.740918540796463*^9}, {
+   3.7409187206799545`*^9, 3.7409187233545423`*^9}, 3.740918803733847*^9, {
+   3.740928180170451*^9, 3.740928181239307*^9}, 3.7409289140450077`*^9, {
+   3.740929313607746*^9, 3.7409293180913005`*^9}, {3.74092936359077*^9, 
+   3.740929369522817*^9}, {3.7409297792912464`*^9, 3.740929780511771*^9}, {
+   3.7409298833530273`*^9, 3.7409299201810274`*^9}, {3.740983618884268*^9, 
+   3.740983619362993*^9}, {3.740983729492496*^9, 3.740983752750346*^9}, {
+   3.740985074896674*^9, 3.74098510691606*^9}, {3.7409851544110284`*^9, 
+   3.740985155813317*^9}, {3.740995075341255*^9, 3.740995083820616*^9}, 
+   3.740995507793827*^9},ExpressionUUID->"94e66781-6066-4bf6-9d7d-\
+baef37086e42"],
+
+Cell[BoxData["0.3`"], "Print",
+ CellChangeTimes->{
+  3.7409289212807264`*^9, 3.7409293188817096`*^9, 3.7409293703843026`*^9, 
+   3.7409299268365974`*^9, 3.7409308220291224`*^9, {3.740983733571602*^9, 
+   3.7409837538523626`*^9}, 3.7409851079523067`*^9, 3.7409851669524956`*^9, 
+   3.7409950842643967`*^9, 
+   3.7409955089068174`*^9},ExpressionUUID->"020c3268-b672-4685-90dc-\
+8a98f90597a6"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "$MinPrecision","precset",
+   "\"Cannot set \\!\\(\\*RowBox[{\\\"$MinPrecision\\\"}]\\) to \
+\\!\\(\\*RowBox[{\\\"-\\\", \\\"\[Infinity]\\\"}]\\); value must be a \
+non-negative number or Infinity.\"",2,192,22,22088910286659520857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.740928921739499*^9, 3.7409293193290205`*^9, 3.740929370706435*^9, 
+   3.740929927357163*^9, 3.7409308229307117`*^9, {3.7409837360020905`*^9, 
+   3.740983756150219*^9}, 3.7409851108155937`*^9, 3.740985170074148*^9, 
+   3.740995128406371*^9, 
+   3.7409955527765174`*^9},ExpressionUUID->"6b9593f7-7603-4485-95c5-\
+0de1caef3f8c"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "$MinPrecision","precset",
+   "\"Cannot set \\!\\(\\*RowBox[{\\\"$MinPrecision\\\"}]\\) to \
+\\!\\(\\*RowBox[{\\\"-\\\", \\\"\[Infinity]\\\"}]\\); value must be a \
+non-negative number or Infinity.\"",2,192,23,22088910286659520857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.740928921739499*^9, 3.7409293193290205`*^9, 3.740929370706435*^9, 
+   3.740929927357163*^9, 3.7409308229307117`*^9, {3.7409837360020905`*^9, 
+   3.740983756150219*^9}, 3.7409851108155937`*^9, 3.740985170074148*^9, 
+   3.740995128406371*^9, 
+   3.740995557675419*^9},ExpressionUUID->"0b7bf12c-208d-46c9-9d10-\
+6ea42037d403"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "$MinPrecision","precset",
+   "\"Cannot set \\!\\(\\*RowBox[{\\\"$MinPrecision\\\"}]\\) to \
+\\!\\(\\*RowBox[{\\\"-\\\", \\\"\[Infinity]\\\"}]\\); value must be a \
+non-negative number or Infinity.\"",2,192,24,22088910286659520857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.740928921739499*^9, 3.7409293193290205`*^9, 3.740929370706435*^9, 
+   3.740929927357163*^9, 3.7409308229307117`*^9, {3.7409837360020905`*^9, 
+   3.740983756150219*^9}, 3.7409851108155937`*^9, 3.740985170074148*^9, 
+   3.740995128406371*^9, 
+   3.7409955626351576`*^9},ExpressionUUID->"459dd83b-e972-4e60-81bf-\
+81f9f982a81c"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "General","stop",
+   "\"Further output of \\!\\(\\*StyleBox[RowBox[{\\\"$MinPrecision\\\", \
+\\\"::\\\", \\\"precset\\\"}], \\\"MessageName\\\"]\\) will be suppressed \
+during this calculation.\"",2,192,25,22088910286659520857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.740928921739499*^9, 3.7409293193290205`*^9, 3.740929370706435*^9, 
+   3.740929927357163*^9, 3.7409308229307117`*^9, {3.7409837360020905`*^9, 
+   3.740983756150219*^9}, 3.7409851108155937`*^9, 3.740985170074148*^9, 
+   3.740995128406371*^9, 
+   3.740995562656101*^9},ExpressionUUID->"2924192e-62fc-4097-8633-\
+474f1ced177b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"frames", "[", 
+    RowBox[{"[", "n", "]"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", 
+     RowBox[{"Length", "[", "frames", "]"}], ",", "1"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"coofmean", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ";;", 
+      RowBox[{"-", "1"}]}], "]"}], "]"}], ",", 
+   RowBox[{"PlotMarkers", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\[FilledSmallCircle]", ",", "15"}], "}"}]}], ",", 
+   RowBox[{"PlotLabel", "\[Rule]", 
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<\[Sigma]/\[Mu] of Apogee\>\"", ",", 
+      RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}], ",", 
+      "35"}], "]"}]}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Style", "[", 
+       RowBox[{"\"\<e\>\"", ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}]}], 
+       "]"}], ",", 
+      RowBox[{"Style", "[", 
+       RowBox[{"\"\<\[Sigma]/\[Mu]\>\"", ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}]}], 
+       "]"}]}], "}"}]}], ",", 
+   RowBox[{"LabelStyle", "\[Rule]", 
+    RowBox[{"Directive", "[", 
+     RowBox[{"Black", ",", "18", ",", 
+      RowBox[{"FontFamily", "->", "\"\<Liberation Serif\>\""}]}], "]"}]}], 
+   ",", 
+   RowBox[{"ImageSize", "\[Rule]", 
+    RowBox[{"{", "1080", "}"}]}], ",", 
+   RowBox[{"PlotRange", "->", "All"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", "Black"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.740923412171133*^9, 3.7409234272649755`*^9}, {
+  3.74092983593377*^9, 3.7409298372302027`*^9}, {3.7409344102091446`*^9, 
+  3.740934427909326*^9}, {3.7409931797969913`*^9, 3.7409932285027285`*^9}, {
+  3.7409933586726813`*^9, 3.7409933695585747`*^9}, {3.740993516785428*^9, 
+  3.7409935169629536`*^9}, {3.7409955867377524`*^9, 
+  3.740995587469794*^9}},ExpressionUUID->"3b66b238-cc06-40d5-8a12-\
+f25c34e7aae5"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`n$$ = 1, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 1, 1, 1}}, Typeset`size$$ = {
+    792., {267., 274.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`n$8502992$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`n$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$8502992$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Part[$CellContext`frames, $CellContext`n$$], 
+      "Specifications" :> {{$CellContext`n$$, 1, 1, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{847., {318., 325.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.7409934843681064`*^9, 3.7409935173210306`*^9, 
+  3.740995434881446*^9, 
+  3.7409955879056206`*^9},ExpressionUUID->"0674cd72-468b-42ff-8f04-\
+8b4e7bd0aa5c"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {
+    {GrayLevel[0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+     GeometricTransformationBox[InsetBox[
+       StyleBox["\[FilledSmallCircle]",
+        StripOnInput->False,
+        FontSize->15], {0., 0.}], {{{0.3, 0.11853941290217294`}}, {{0.3, 
+      0.11853941290217294`}}}]}, {}}, {}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     StyleBox[
+     "\"e\"", FontFamily -> "Liberation Serif", StripOnInput -> False], 
+     TraditionalForm], 
+    FormBox[
+     StyleBox[
+     "\"\[Sigma]/\[Mu]\"", FontFamily -> "Liberation Serif", StripOnInput -> 
+      False], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{1080},
+  LabelStyle->Directive[
+    GrayLevel[0], 18, FontFamily -> "Liberation Serif"],
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    StyleBox[
+    "\"\[Sigma]/\[Mu] of Apogee\"", FontFamily -> "Liberation Serif", 35, 
+     StripOnInput -> False], TraditionalForm],
+  PlotRange->{{0, 0.6}, {0, 0.2370788258043459}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.7409934843681064`*^9, 3.7409935173210306`*^9, 
+  3.740995434881446*^9, 
+  3.74099558796543*^9},ExpressionUUID->"691c99b8-ae69-4e39-8201-327230d6b106"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`n$$ = 75, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 1, 90, 1}}, Typeset`size$$ = {
+    840., {267., 274.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`n$8414586$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`n$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`n$$, $CellContext`n$8414586$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Part[$CellContext`frames, $CellContext`n$$], 
+      "Specifications" :> {{$CellContext`n$$, 1, 90, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{895., {332., 339.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Input",
+ CellChangeTimes->{{3.7409934802291718`*^9, 
+  3.740993480258095*^9}},ExpressionUUID->"f1dcbd8a-8c5e-4630-9b02-\
+74980970e6f3"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {
+    {GrayLevel[0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+     GeometricTransformationBox[InsetBox[
+       StyleBox["\[FilledSmallCircle]",
+        StripOnInput->False,
+        FontSize->15], {0., 0.}], CompressedData["
+1:eJxTTMoPSmVmYGBQBmJGIGYC4mqRde4Pq1rss95en+Bn+dQOwp9in8m9fUH/
+tet2O+RaXwfumGf/1VVSpGTKD6j8EnuRJ46CG3+y28+aCQIr7Z9LbuOvWiZo
+vxOsfp29f0WBd/QRcXsgByiy0V5zTVwwS6acPUT/FvsvrQE2t3Yo23NdX1xg
+y7Xd/ob6t/p9q1XtwcbN3GmfxqiR9s5L014zpv/QV4099s837pPmytexh7hn
+n/1a71TZz3v17JcAdV9ffMC+bZN90dnr+vZvwPYdtJeUsXvOf0ff3sQYBA7b
+84THFj3iN4Daf8Reeta8Z8uDDewPf9UA2nDUvln08Rm+Ln17brB7jttb7a9+
+uU1Uzz4IbOEJe3nThQtfMGpB/XvS3uDTz67nemr2j6pABp6yX105c+n1AhWo
+e8/Y2wUvrNQpV7IvBDmv4Kx9+aX2XY5u8tDwOWd/I3fCz63S0vYMYHDB3i/z
+yLXDKqxQ/1yw56m4nG/PwWXv8RBkwUV7LxuNivwbz+0g/rtoL256ObhHisd+
+wiGQBy7Z9yxceGjDNiF7sHeNL9u/fRvcc9FY3h7sneuX7S2/+WnZnlKC+v+K
+fYxs+98JEa728iDnyF21FxLdcubKWi9oeFy153nTFCG5y9s+PQ0ErtnL2Ke8
+PDjRzx4AnRQA3w==
+      "]]}, {}}, {}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     StyleBox[
+     "\"e\"", FontFamily -> "Liberation Serif", StripOnInput -> False], 
+     TraditionalForm], 
+    FormBox[
+     StyleBox[
+     "\"\[Sigma]/\[Mu]\"", FontFamily -> "Liberation Serif", StripOnInput -> 
+      False], TraditionalForm]},
+  AxesOrigin->{0.0046875, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{1080},
+  LabelStyle->Directive[
+    GrayLevel[0], 18, FontFamily -> "Liberation Serif"],
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    StyleBox[
+    "\"\[Sigma]/\[Mu] of Apogee\"", FontFamily -> "Liberation Serif", 35, 
+     StripOnInput -> False], TraditionalForm],
+  PlotRange->{{0.01, 0.35000000000000003`}, {0, 0.0009329029879001391}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.7409338347833223`*^9, 3.740933892385914*^9, 3.7409344326729193`*^9, 
+   3.7409850085440474`*^9, 3.740985142061077*^9, 3.7409931276663465`*^9, {
+   3.7409931864252357`*^9, 3.7409932298581047`*^9}, {3.740993363690279*^9, 
+   3.7409933701629686`*^9}},ExpressionUUID->"798e677b-977c-441e-8916-\
+08776684fada"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"75\\\"}]\\) of \\!\\(\\*RowBox[{\\\"{\\\", \
+GraphicsBox[List[List[], List[List[List[Directive[PointSize[Skeleton[1]], \
+RGBColor[Skeleton[3]], AbsoluteThickness[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[251]]]], \
+List[Directive[PointSize[Skeleton[1]], RGBColor[Skeleton[3]], \
+AbsoluteThickness[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[251]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.02`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 0]], Rule[PlotRange, \
+List[List[0.`, 251.`], List[0, 8.922778604072725`*^6]]], \
+Rule[PlotRangeClipping, True], Rule[ImagePadding, All], Rule[DisplayFunction, \
+Identity], Rule[AspectRatio, NCache[Power[GoldenRatio, -1], \
+0.6180339887498948`]], Rule[Axes, List[True, True]], Rule[AxesLabel, \
+List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", Rule[FontFamily, \
+\\\"Liberation Serif\\\"], Rule[StripOnInput, False]], TraditionalForm], \
+FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", Rule[FontFamily, \\\"Liberation \
+Serif\\\"], Rule[StripOnInput, False]], TraditionalForm]]], Rule[AxesOrigin, \
+List[0.`, 0]], RuleDelayed[DisplayFunction, Identity], Rule[Frame, \
+List[List[False, False], List[False, False]]], Rule[FrameLabel, \
+List[List[None, None], List[None, None]]], Rule[FrameTicks, \
+List[List[Automatic, Automatic], List[Automatic, Automatic]]], \
+Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 251.`], List[0, \
+8.922778604072725`*^6]]], Rule[PlotRangeClipping, True], \
+Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.02`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\"}\\\"}]\\) does not exist.\"",2,195,26,
+   22088910286659520857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.740995644650882*^9},ExpressionUUID->"1db903bb-bc73-43d7-9258-\
+4357a873fe90"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.740931377625533*^9, 
+  3.740931378266431*^9}},ExpressionUUID->"4c67eae6-c305-4e1a-83e0-\
+9b2a869ac24e"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {
+    {GrayLevel[0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+     GeometricTransformationBox[InsetBox[
+       StyleBox["\[FilledSmallCircle]",
+        StripOnInput->False,
+        FontSize->15], {0., 0.}], CompressedData["
+1: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
+      "]]}, {}}, {}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     StyleBox[
+     "\"e\"", FontFamily -> "Liberation Serif", StripOnInput -> False], 
+     TraditionalForm], 
+    FormBox[
+     StyleBox[
+     "\"\[Sigma]/\[Mu]\"", FontFamily -> "Liberation Serif", StripOnInput -> 
+      False], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{638.1818181818185, 425.45454545454544`},
+  LabelStyle->Directive[
+    GrayLevel[0], 18, FontFamily -> "Liberation Serif"],
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    StyleBox[
+    "\"\[Sigma]/\[Mu] of Apogee\"", FontFamily -> "Liberation Serif", 35, 
+     StripOnInput -> False], TraditionalForm],
+  PlotRange->{{0, 0.898}, {0, 0.025775665109869967`}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.7409227965057697`*^9, 3.740922867184475*^9, 3.740923315944093*^9, {
+   3.7409234135425434`*^9, 3.7409234281715107`*^9}, 3.74092392742238*^9, 
+   3.740928938240814*^9, 3.740929332627406*^9, 3.7409297360733123`*^9, 
+   3.740929839764915*^9, 
+   3.740930752415636*^9},ExpressionUUID->"a5585d8c-ff63-49c3-8cd7-\
+b3e680c73091"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"ListPlot", "[", 
+   RowBox[{"coofmean", ",", 
+    RowBox[{"PlotMarkers", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\[FilledSmallCircle]", ",", "15"}], "}"}]}], ",", 
+    RowBox[{"PlotLabel", "\[Rule]", 
+     RowBox[{"Style", "[", 
+      RowBox[{"\"\<\[Sigma]/\[Mu] of Apogee\>\"", ",", 
+       RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}], ",", 
+       "35"}], "]"}]}], ",", 
+    RowBox[{"AxesLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<e\>\"", ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}]}], 
+        "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Sigma]/\[Mu]\>\"", ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Liberation Serif\>\""}]}], 
+        "]"}]}], "}"}]}], ",", 
+    RowBox[{"LabelStyle", "\[Rule]", 
+     RowBox[{"Directive", "[", 
+      RowBox[{"Black", ",", "18", ",", 
+       RowBox[{"FontFamily", "->", "\"\<Liberation Serif\>\""}]}], "]"}]}], 
+    ",", 
+    RowBox[{"ImageSize", "\[Rule]", 
+     RowBox[{"{", "1080", "}"}]}], ",", 
+    RowBox[{"PlotStyle", "\[Rule]", "Black"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.740919689793685*^9, 3.740919690228024*^9}, 
+   3.740919948747283*^9, {3.740920248571392*^9, 3.740920254913879*^9}, {
+   3.740920618335027*^9, 3.7409206314925017`*^9}, {3.7409208928009834`*^9, 
+   3.7409208977776475`*^9}, {3.7409210135566115`*^9, 3.740921046857599*^9}, {
+   3.740921096701299*^9, 3.740921101028761*^9}, {3.74092114022692*^9, 
+   3.7409211472900352`*^9}, {3.7409212102187767`*^9, 
+   3.7409212136904936`*^9}, {3.7409215929987926`*^9, 3.740921597070099*^9}, {
+   3.7409228133183618`*^9, 3.740922814272337*^9}, {3.7409233393290987`*^9, 
+   3.7409233502954407`*^9}, {3.7409260897324677`*^9, 3.740926090115444*^9}, 
+   3.7409298310242004`*^9},ExpressionUUID->"6328934b-1f66-4f98-b31e-\
+89875ca697c5"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.740989543423724*^9, 
+  3.740989543880503*^9}},ExpressionUUID->"0ab01150-95e4-4183-9a1a-\
+0d1799cd66ee"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {
+    {GrayLevel[0], AbsolutePointSize[6], AbsoluteThickness[1.6], 
+     GeometricTransformationBox[InsetBox[
+       StyleBox["\[FilledSmallCircle]",
+        StripOnInput->False,
+        FontSize->15], {0., 0.}], CompressedData["
+1:eJwtl2lczVsfxZPhuh5D5qSQKcm916yivYhym9CpEEpKiiINqBQipIEKZapQ
+pCRypUHSpEnzPHfmc6oTZSrTvU//4f/hRW/22Xv/1vqutVVtXTj2w+Xk5NSH
+yckN/ZOTH/p/ckryZp63P87XSXbEGN8j2i+Kj2fHBEJlwZhd0Yn3yM+E/hoT
+21Bwc0Z+XM+LJW3fTh3K8riKtWq6natz4kmmwVh5jYsRaJSui/xy6Qm5dZP+
+0GSl7MHLTCHeXQuXjU66g71uS0KHB70gO7XoH8BO5/vl1zXTyZ2COc/cHO/B
+7bt1kefgKxLkLPmR0H8fC67YFW79+IYw+4uD/M++Wl2SR5yGflxxxEPorG1/
+NHCogOzev7Zza0g8nPtNkuPtC4khtZ1pCcjs+jvjYG8xe55E1PxKcN8fXErU
+91zJ+7IoCcPyPvinrSkjM0ZsH//H8yf4HFBW57S4kvyepLxr/9qnuJXy3Eaj
+qoo9/zNUhhQek+6sIZ9/1Xl2LUyB97f+W6UtNaTHNH3W+Z4UHI3b4O8uriOC
+B7eHTvQcG2+XGWm11pNW+r7+AVf0te64YSOpNbFVGLoDyOZnfBmY3Uze3dN7
++enXCxyMmaFaYt9KhjY3tMNULNbXdbQxbWfv9yXOexYof57URp5HfYgvNEoD
+dqikiG61kURqewrpOKzz9GZwVge5Ty1Xlw6HJquHvfJcwowjAwJ5oz+q/bgk
+rNcHq6wzcfbpyMF6dR65tMFGVDX3FcKuBlsoHOcRv+sbh0bwCuZZN/o7wSde
+9PyyMOHJ39sMr/LJUZ0xjbFHX6Nm5G/KxzQFxJFeMBtd12v6o+YJCLVa67ds
+/KO4esK3SAE77zfwGozUKGoUkkeFRmsubciBtsLKOa7BQhJHL5iDiKJ/fV/2
+C8ldpb/a54/KhXxT9m7HB0JWH7los4pynqAqIjeOTDqXU5qLgItWw1siROSa
+IjXAPMTsVnR89EVEQpkLRGnFQJ6av4gE03rKwwqOrY7HOjEJmNZcMWCWj8ER
+xgsrm4TEP6d0aAL5KDJarTzvmYicptStWID3sozdTxUkrP4KkGu5wO9dqpic
+yI4Z2mEBfOborVOKFhF3+gLewobY7eS8EhMXanv33iJsSyhvsrGY1Wshvp6a
+6lPQIyYOB6ivEFqXleUMF4iJHaWG4kKQ4SM+5UeJyV564EXI7/Y+e9BNzOq7
+CM9cpa8D88WEUmvUhyJ8/Z3LWdMgIhxKfqbFuDlnzQp+roBsoeVVDCdZXfj7
+MCHrhxI0eRUdTRUIiD4lD88SLI3JycuSCoguPbASrPgxx4IXIySEGq9OKTh/
+vpAcNhay/inFOF3u7OLTPLLamtrgO3wJWTh7y3IRWT6aMsw7XJsa5HD1toD8
+SQv0HVYu2qG7qlzA+q0MT2oHq1qShWTBKEphZfBVUY8e/0ZAVIemG9ZbhjGa
+R97+b6KQqOyiDlwOzszTs7afEbD+LEdvnPbdxHIRmUqNY0oFbJ1NHi4JEpKJ
+tMAq0K5xR1V5jIiMo47bXIHIr/flhVPErJ8rcSY5KSljcjcZSV9gJd72h8xq
+05YSOfqrQpzLTr1f10TkX8rey6rwpm/UppJePuv/KmxVu7nfUyYg32n8VaH6
+6Y1lzk4iMmhGOb4KRyQjRs8KFpGvlPq+VOHPrTXuXXvFLC+q0fb0kpfRbTH5
+SNl1ZzWeOc6PDEuWkL54yhDVOGCbGBwxS0re0/asxo7HCasc1bqIjOZLNTa0
+DEwIONBNuik7KtegbMvYvenl3UT6g9pgDU7etNLeN11GxJT9TtWgxXNKRVSK
+jAhpHtUgQef088X8XsL3pgRdA8kwe+tLth8Id2tI5JFJtbh15fHcBwZ9ZMh8
+QwOqhYaC6bcRe/pZftWiXDPm84jQj4Ryj+BBLY69q3pkObWfUGoZ01iLyJf+
+i1vlPpN66vpG10FhMv+I0GuA5V0dlirJlPy5BqimtneoDonakfVeRUAltdzt
+OtT7P+AZHCUoL6O+OnQVr7091UQPDB/roPw2zfLODF2UHKcMWA/heuvsL8eM
+hnw7hBObeiwJbd0j4WzGWwoXYfU49KRy/dmf+sincVAPd/Wg9O8lm5BL2f1T
+PWble0faRm7CG8rO8xuQbPA4XFNXH68pu25vQMiFxG92DzfjFc3fBjzQ8l18
+WtEcGZTd0hvgFuKi97NBD2mUnboaoHbo52lZpS5SKbsoNaL7+O5dUoe1YHjd
+iCjrYWfjzbaAlrtPI66ssVRMHmcCWs7Jjfiv75a6TGYIWq6djdC1qLC5a28I
+hu9N+Mg1GShuMAXDzybM91gU3rnOAA+p8bo1YWLj4pTwTRvB8LQJ5y2TzAS1
+RmDyoAn2V32nVmSZgOFrM0qtH0r+qzdFNLW9Nc3ovTM+Ydw/28DwthlTck27
+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
+ZPNchvQ5y3qXB+ayeS4Df7xS7NS6fPwfkoQ6gQ==
+      "]]}, {}}, {}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{
+    FormBox[
+     StyleBox[
+     "\"e\"", FontFamily -> "Liberation Serif", StripOnInput -> False], 
+     TraditionalForm], 
+    FormBox[
+     StyleBox[
+     "\"\[Sigma]/\[Mu]\"", FontFamily -> "Liberation Serif", StripOnInput -> 
+      False], TraditionalForm]},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{734.5454545454545, 489.09090909090907`},
+  LabelStyle->Directive[
+    GrayLevel[0], 18, FontFamily -> "Liberation Serif"],
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+    StyleBox[
+    "\"\[Sigma]/\[Mu] of Apogee\"", FontFamily -> "Liberation Serif", 35, 
+     StripOnInput -> False], TraditionalForm],
+  PlotRange->{{0, 0.898}, {0, 0.029286464828735675`}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.7409276015338564`*^9, 3.7409281976084156`*^9, 
+  3.740928329517455*^9, 3.7409289459707913`*^9, 3.7409292803161817`*^9, 
+  3.7409293381327868`*^9, 
+  3.740929749847262*^9},ExpressionUUID->"fd9691d6-6697-43d5-abca-\
+d420d3a76aa7"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"297\\\"}]\\) of \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1999]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1976]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.794484408356609`*^6]], \
+Rule[PlotRange, List[List[0.`, 1999.`], List[6.801247074404551`*^6, \
+6.936500395363406`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.794484408356609`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1999.`], \
+List[6.801247074404551`*^6, 6.936500395363406`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1984]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1981]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.718965375065821`*^6]], \
+Rule[PlotRange, List[List[0.`, 1984.`], List[6.7326`*^6, \
+7.005292498683585`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.718965375065821`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1984.`], List[6.7326`*^6, \
+7.005292498683585`*^6]]], Rule[PlotRangeClipping, True], \
+Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1986]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1984]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.643378445291241`*^6]], \
+Rule[PlotRange, List[List[0.`, 1986.`], List[6.6639`*^6, \
+7.074331094175183`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.643378445291241`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1986.`], List[6.6639`*^6, \
+7.074331094175183`*^6]]], Rule[PlotRangeClipping, True], \
+Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1961]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1970]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.567786930766251`*^6]], \
+Rule[PlotRange, List[List[0.`, 1970.`], List[6.5952`*^6, \
+7.143461384674986`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.567786930766251`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1970.`], List[6.5952`*^6, \
+7.143461384674986`*^6]]], Rule[PlotRangeClipping, True], \
+Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1960]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1979]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.491966132534613`*^6]], \
+Rule[PlotRange, List[List[0.`, 1979.`], List[6.526281024375871`*^6, \
+7.212578861201042`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.491966132534613`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1979.`], \
+List[6.526281024375871`*^6, 7.212578861201042`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1975]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1983]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.4161826295278985`*^6]], \
+Rule[PlotRange, List[List[0.`, 1983.`], List[6.4573997932913145`*^6, \
+7.2817430685596345`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.4161826295278985`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1983.`], \
+List[6.4573997932913145`*^6, 7.2817430685596345`*^6]]], \
+Rule[PlotRangeClipping, True], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[Ticks, List[Automatic, Automatic]]]], \\\",\\\", \
+GraphicsBox[List[List[], List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1968]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1991]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.340142598982649`*^6]], \
+Rule[PlotRange, List[List[0.`, 1991.`], List[6.388276340053565`*^6, \
+7.35095116147189`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.340142598982649`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1991.`], \
+List[6.388276340053565`*^6, 7.35095116147189`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1977]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1975]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.263873691291634`*^6]], \
+Rule[PlotRange, List[List[0.`, 1977.`], List[6.318944089663923`*^6, \
+7.4203520571097005`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.263873691291634`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1977.`], \
+List[6.318944089663923`*^6, 7.4203520571097005`*^6]]], \
+Rule[PlotRangeClipping, True], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[Ticks, List[Automatic, Automatic]]]], \\\",\\\", \
+GraphicsBox[List[List[], List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1976]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1977]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.187479603053591`*^6]], \
+Rule[PlotRange, List[List[0.`, 1977.`], List[6.249474833439216`*^6, \
+7.489379441151707`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.187479603053591`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1977.`], \
+List[6.249474833439216`*^6, 7.489379441151707`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1981]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1981]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.111012327702342`*^6]], \
+Rule[PlotRange, List[List[0.`, 1981.`], List[6.179948076893553`*^6, \
+7.558663060717779`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.111012327702342`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1981.`], \
+List[6.179948076893553`*^6, 7.558663060717779`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1986]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1988]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 6.034126022297959`*^6]], \
+Rule[PlotRange, List[List[0.`, 1988.`], List[6.110017279814357`*^6, \
+7.627842430142334`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 6.034126022297959`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1988.`], \
+List[6.110017279814357`*^6, 7.627842430142334`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1987]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1987]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.956831369013891`*^6]], \
+Rule[PlotRange, List[List[0.`, 1987.`], List[6.039694174653062`*^6, \
+7.696950287436496`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.956831369013891`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1987.`], \
+List[6.039694174653062`*^6, 7.696950287436496`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1989]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1991]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.880273752728663`*^6]], \
+Rule[PlotRange, List[List[0.`, 1991.`], List[5.970065152833243`*^6, \
+7.765893154924845`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.880273752728663`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1991.`], \
+List[5.970065152833243`*^6, 7.765893154924845`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1984]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1989]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.803078188345785`*^6]], \
+Rule[PlotRange, List[List[0.`, 1989.`], List[5.899819635193698`*^6, \
+7.834648572151952`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.803078188345785`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1989.`], \
+List[5.899819635193698`*^6, 7.834648572151952`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1985]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1981]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.726804479511929`*^6]], \
+Rule[PlotRange, List[List[0.`, 1985.`], List[5.830449817769019`*^6, \
+7.903356582910818`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.726804479511929`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1985.`], \
+List[5.830449817769019`*^6, 7.903356582910818`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1993]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1969]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.650365628329159`*^6]], \
+Rule[PlotRange, List[List[0.`, 1993.`], List[5.760926855571316`*^6, \
+7.972151400414458`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.650365628329159`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1993.`], \
+List[5.760926855571316`*^6, 7.972151400414458`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1984]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1974]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.574262422332628`*^6]], \
+Rule[PlotRange, List[List[0.`, 1984.`], List[5.691713265695297`*^6, \
+8.040730132948697`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.574262422332628`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1984.`], \
+List[5.691713265695297`*^6, 8.040730132948697`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1976]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1969]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.498360893163884`*^6]], \
+Rule[PlotRange, List[List[0.`, 1976.`], List[5.622685796507578`*^6, \
+8.109183863381487`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.498360893163884`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1976.`], \
+List[5.622685796507578`*^6, 8.109183863381487`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1983]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1973]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.422349816433679`*^6]], \
+Rule[PlotRange, List[List[0.`, 1983.`], List[5.55353148260842`*^6, \
+8.177164806103238`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.422349816433679`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1983.`], \
+List[5.55353148260842`*^6, 8.177164806103238`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1991]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1991]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.34641607209841`*^6]], \
+Rule[PlotRange, List[List[0.`, 1991.`], List[5.484455061082717`*^6, \
+8.24523484076887`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.34641607209841`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1991.`], \
+List[5.484455061082717`*^6, 8.24523484076887`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1974]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1987]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.270702487767436`*^6]], \
+Rule[PlotRange, List[List[0.`, 1987.`], List[5.415603814810927`*^6, \
+8.313630355680748`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.270702487767436`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1987.`], \
+List[5.415603814810927`*^6, 8.313630355680748`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1986]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1976]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.194983779649866`*^6]], \
+Rule[PlotRange, List[List[0.`, 1986.`], List[5.346742599858473`*^6, \
+8.381919004030634`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.194983779649866`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1986.`], \
+List[5.346742599858473`*^6, 8.381919004030634`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1981]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1974]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.119226465980389`*^6]], \
+Rule[PlotRange, List[List[0.`, 1981.`], List[5.277838577066107`*^6, \
+8.45008079878047`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.119226465980389`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1981.`], \
+List[5.277838577066107`*^6, 8.45008079878047`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1988]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1986]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 5.0439888845551`*^6]], \
+Rule[PlotRange, List[List[0.`, 1988.`], List[5.209439150049533`*^6, \
+8.518444459938183`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 5.0439888845551`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1988.`], \
+List[5.209439150049533`*^6, 8.518444459938183`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1983]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1975]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 4.967575921297789`*^6]], \
+Rule[PlotRange, List[List[0.`, 1983.`], List[5.1398561412211405`*^6, \
+8.58546053968819`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 4.967575921297789`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1983.`], \
+List[5.1398561412211405`*^6, 8.58546053968819`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1978]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1957]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 4.892941935567493`*^6]], \
+Rule[PlotRange, List[List[0.`, 1978.`], List[5.07206392563181`*^6, \
+8.654503726918159`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 4.892941935567493`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1978.`], \
+List[5.07206392563181`*^6, 8.654503726918159`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1976]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1973]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 4.817705602323946`*^6]], \
+Rule[PlotRange, List[List[0.`, 1976.`], List[5.003622142722321`*^6, \
+8.721952950689837`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 4.817705602323946`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1976.`], \
+List[5.003622142722321`*^6, 8.721952950689837`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1984]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1979]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 4.742291667091817`*^6]], \
+Rule[PlotRange, List[List[0.`, 1984.`], List[4.935067873338195`*^6, \
+8.790591998265749`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 4.742291667091817`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1984.`], \
+List[4.935067873338195`*^6, 8.790591998265749`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1983]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1973]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 4.667136976542571`*^6]], \
+Rule[PlotRange, List[List[0.`, 1983.`], List[4.866760916201418`*^6, \
+8.859239709378384`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 4.667136976542571`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1983.`], \
+List[4.866760916201418`*^6, 8.859239709378384`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]], \\\",\\\", GraphicsBox[List[List[], \
+List[List[List[Directive[PointSize[Skeleton[1]], \
+AbsoluteThickness[Skeleton[1]], GrayLevel[Skeleton[1]], \
+AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1989]]]], \
+List[Directive[PointSize[Skeleton[1]], AbsoluteThickness[Skeleton[1]], \
+GrayLevel[Skeleton[1]], AbsolutePointSize[Skeleton[1]]], \
+GeometricTransformationBox[InsetBox[BoxData[FormBox[RowBox[List[\\\"\\\\[\
+LeftSkeleton]\\\", \\\"2\\\", \\\"\\\\[RightSkeleton]\\\"]], \
+TraditionalForm]]], List[Skeleton[1979]]]], List[]]], List[], List[], List[], \
+List[]], List[Rule[DisplayFunction, Identity], Rule[PlotRangePadding, \
+List[List[Scaled[0.02`], Scaled[0.02`]], List[Scaled[0.05`], \
+Scaled[0.05`]]]], Rule[AxesOrigin, List[0.`, 4.591898237219085`*^6]], \
+Rule[PlotRange, List[List[0.`, 1989.`], List[4.798373934721473`*^6, \
+8.927887884769235`*^6]]], Rule[PlotRangeClipping, True], Rule[ImagePadding, \
+All], Rule[DisplayFunction, Identity], Rule[AspectRatio, \
+NCache[Power[GoldenRatio, -1], 0.6180339887498948`]], Rule[Axes, List[True, \
+True]], Rule[AxesLabel, List[FormBox[StyleBox[\\\"\\\\\\\" \\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm], FormBox[StyleBox[\\\"\\\\\\\"r\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], Rule[StripOnInput, False]], \
+TraditionalForm]]], Rule[AxesOrigin, List[0.`, 4.591898237219085`*^6]], \
+RuleDelayed[DisplayFunction, Identity], Rule[Frame, List[List[False, False], \
+List[False, False]]], Rule[FrameLabel, List[List[None, None], List[None, \
+None]]], Rule[FrameTicks, List[List[Automatic, Automatic], List[Automatic, \
+Automatic]]], Rule[GridLines, List[None, None]], Rule[GridLinesStyle, \
+Directive[GrayLevel[0.5`, 0.4`]]], Rule[ImageSize, List[720]], \
+Rule[LabelStyle, Directive[GrayLevel[0], 18, Rule[FontFamily, \\\"Liberation \
+Serif\\\"]]], Rule[Method, List[Rule[\\\"CoordinatesToolOptions\\\", \
+List[Rule[Skeleton[2]], Rule[Skeleton[2]]]]]], Rule[PlotLabel, \
+FormBox[StyleBox[\\\"\\\\\\\"Apogee/Perigee Clusters\\\\\\\"\\\", \
+Rule[FontFamily, \\\"Liberation Serif\\\"], 35, Rule[StripOnInput, False]], \
+TraditionalForm]], Rule[PlotRange, List[List[0.`, 1989.`], \
+List[4.798373934721473`*^6, 8.927887884769235`*^6]]], Rule[PlotRangeClipping, \
+True], Rule[PlotRangePadding, List[List[Scaled[0.02`], Scaled[0.02`]], \
+List[Scaled[0.05`], Scaled[0.05`]]]], Rule[Ticks, List[Automatic, \
+Automatic]]]]}], \\\"}\\\"}]\\) does not exist.\"",2,69,9,
+   22088910286659520857,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.7409850206606684`*^9},ExpressionUUID->"edb3094e-d759-4983-9065-\
+d62ce3baa25d"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.740927507442395*^9, 
+  3.7409275111498923`*^9}},ExpressionUUID->"ada76223-8958-476d-89f9-\
+2e41a3d23f19"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"clusters", " ", "=", " ", 
+  RowBox[{"{", "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"clusters", " ", "=", " ", 
+    RowBox[{"Append", "[", 
+     RowBox[{"clusters", ",", " ", 
+      RowBox[{"FindClusters", "[", 
+       RowBox[{
+        RowBox[{"allpoints", "[", 
+         RowBox[{"[", "n", "]"}], "]"}], ",", "2"}], "]"}]}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", 
+     RowBox[{"Length", "[", "allpoints", "]"}]}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7409283420158105`*^9, 
+  3.740928406977944*^9}},ExpressionUUID->"c7fec143-355a-45fd-bd7c-\
+f37b214b2144"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.7409283478920956`*^9, 3.740928407689542*^9, 
+  3.740928502586853*^9},ExpressionUUID->"b4ecdcd0-ca01-4e79-92b2-\
+8ea2eee01dca"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"means", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"means", " ", "=", " ", 
+    RowBox[{"Append", "[", 
+     RowBox[{"means", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"clusters", "[", 
+           RowBox[{"[", "n", "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"clusters", "[", 
+           RowBox[{"[", "n", "]"}], "]"}], "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", 
+     RowBox[{"Length", "[", "clusters", "]"}]}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7409285415407248`*^9, 
+  3.740928618615676*^9}},ExpressionUUID->"34a13428-393f-4a57-8317-\
+e61269b0a01f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"apos", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"means", "[", 
+        RowBox[{"[", "n", "]"}], "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ">", 
+      RowBox[{
+       RowBox[{"means", "[", 
+        RowBox[{"[", "n", "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+     RowBox[{"apos", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"apos", ",", 
+        RowBox[{
+         RowBox[{"clusters", "[", 
+          RowBox[{"[", "n", "]"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ",", 
+     RowBox[{"apos", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"apos", ",", 
+        RowBox[{
+         RowBox[{"clusters", "[", 
+          RowBox[{"[", "n", "]"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", 
+     RowBox[{"Length", "[", "clusters", "]"}]}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.740928413452011*^9, 3.740928434466236*^9}, {
+  3.7409285345953608`*^9, 3.7409285362467575`*^9}, {3.740928656196513*^9, 
+  3.7409288100293417`*^9}},ExpressionUUID->"59243af0-2fc9-4be3-8f58-\
+9978ae268bbf"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["means"], "Input",
+ CellChangeTimes->{{3.740928786187104*^9, 
+  3.740928786447673*^9}},ExpressionUUID->"1f326b01-2d40-47c5-811d-\
+c128ffa07e0f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"7.55469105273134`*^6", ",", "6.182949477375681`*^6"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"8.241348754189204`*^6", ",", "5.495747570980085`*^6"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"8.92763589730635`*^6", ",", "4.808813794866709`*^6"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"4.1248801884289077`*^6", ",", "9.588218848425986`*^6"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"3.437059446612152`*^6", ",", "1.0281444604752632`*^7"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"2.750463757757575`*^6", ",", "1.0948194350016065`*^7"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"2.063926167151927`*^6", ",", "1.1600480457962694`*^7"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"1.3782938847492235`*^6", ",", "1.2011299216241544`*^7"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"1.1287898607102748`*^7", ",", "692198.0128699244`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.740928787006477*^9},ExpressionUUID->"95b16af7-5b6a-456c-9e87-\
+0125ec60d23f"]
+}, Open  ]],
+
+Cell[BoxData[" "], "Input",
+ CellChangeTimes->{
+  3.7409239071765842`*^9},ExpressionUUID->"ed2eb486-5c59-4da4-aca6-\
+038a8ff5e12a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", "apos", "]"}]], "Input",
+ CellChangeTimes->{{3.7409288142771845`*^9, 3.7409288325753026`*^9}, {
+  3.7409289953831306`*^9, 
+  3.7409289988771353`*^9}},ExpressionUUID->"148741c1-6a74-4508-938b-\
+455d1e99d513"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+     0.0055000000000000005`], AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxFkg1MjHEcxx9XKFvNS5NV04vy0iKqy1vct6tzpa677qWOFVPqohpTGNU8
+3iO9n8pLpXkr51DkfRyhVkLNzFtcYkRT2ChjXka//23Pbp/7/j/3/f9+e1zj
+VikTBBzHxf95/n7/+/SJ9sV8ur25LSbw/w8Y1tMTUEBsBS/HuNQ9xCOhbn87
+gye2gzkt+XM28TiccFpzrJjYCcsCzuxnuQvS1zVc20LshvO+qhbW5w6BLrmV
++ROBWwFOO4gn44e3tdsuYk+MdXafWErsBYebi1wLiafBUMlbM386BAXZ5axv
+Brq0E+r2EftA75KxPJfYF4XxKzNZnx/67gjtyoiF2C0WdTD2R0PVClEO8UyE
+LpF4sr5ZuDFfHF9OPBtX/BLX7iWeA/ciwSvmz0VGws4mNl8AbNMjWiqI5+Gn
+1YO9bN75cN52+30+sQhN1euq2HlArvvy9eAg84D/+s/t7HwgyuwGOksoD8Sj
+Lvmow5SLUe8lXUz74sXwt2mLZf1BaDU2J1IfHwTnIIc45gfDLkl1l+blg5Hn
+XRdKfZwERSkvzEcol0Api/11iPIF0LXdM+gpX4DOPstctk8pHKvHTK2mXIre
+EtvXNC8Xgt0imQ3tkw9Bvs8bj6OUh6LFo+bsccpD8eWlsJe9Hwthtlbksf0t
+RM2700UnKA+DxQ/hanb/MGSGSZYyPxwHkmb30z74cDw2FjgYKZdh0r1uM83L
+y7BdmfOT3T8CfZrmLQbKI+DSGCs7SbkcZ2/1b2b7l6NoQ7me7V+B7lEhzWcG
+GQqMbiw1s30pIJXMmVc5yCYFgnUDoD4uEs+Lk2PqyI/Epvxqe9ofH4lL3zxT
+qc8UCfX2le50nlOiV2e1i/UrcXnEk41sH0oMnfI0nfZpUmJn0tbs8+SrYD1E
+30XzQgXNw3AL1q8CNzA8lvpMKuwvE+y4QL4a31uffKghX41GfVod9fFqCEcL
+5ZfIV6NTlri0nnwNjKnnHJmvwQef9s5a8jUYP3NY8VXyNfhYX5tFORcFQ05/
+Cu0TUVDdf55FfXwUOp6d3MP8KBjbc8tPkR8Nw9O7Ivo/RCPF44H8OvnRuBlk
+L2X3j4Zc3OXDfC0a3CpqL5Kvha2fR/EN8rWwdLVKpnlNWsRl9uj/9v0GmW/Z
+Kg==
+      "]]}, 
+    {RGBColor[0.880722, 0.611041, 0.142051], PointSize[
+     0.0055000000000000005`], AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxFlGtMU2ccxqsx6OxEC2OiQWwZFFa1Ivei2Ke0pbWF0nuLfqggMjQqjm1k
+iaQcjBA18TJGMlOvkakEMMsgsGDShUn2wWmybIyNJUYWP4CTsJFJvN8zfd4m
+TfPrc37n/T/ve3JUVXXu7XNlMln1q+/r3/8/M/qRrYs6390bMrz5A7pR7Y3V
+5AVoU/SpEslLkD5zc2cM+T0k/B7uzyAnou3HLkcaOQk4+x/mk5XIjioiSnIK
+ukYTI1pyKmJmv9YsIquxdskXte+TM3DiVux0FlkD68/JLWK+1dh+wNwYS9ai
+fTA8kEnOxMLu9ENivnU47XveKydnYdh84eyH5Gxoqt8ZFn4O/kzrqVxMzkWV
+ZaJc9MnDr1eT+vLJ+WjvjeYuIxdg5H7yrqVkHZ79+8RUQC6EvLP7qJhvPTpV
+rksK8gbo7z/qFf2LUPMsfGUdeSOMrY3OOLIeE67HqRoy8PSzh9HCtywBlf3T
+LWI+A1o3bLmwkrkBpoQjlUXMi1Hxx7dPU5kXY4VNHhL7b8TD/GDOeuZGuHy6
+XDGvCYPfGe7xPCUTvulvkucwN8Nyqq+e60lmhH9bpk5iXoK2OOUN9pFK8MtE
+07CRuQX/ZD+JUTO34IUppVvF3Iqm0Dwtr5essMRd/0jMtwmfG7d9z/WkTZjM
+a74o+tvwiSwi28jchozOPWMrmNvx1/7evGzmdtxJPjanhHkpzmRWd/B8pVLc
+3XHsnHjeylBW0/WllXkZripCIXG+Dsw4Br5KYe5AgiPXZmZejmu3421ivnKc
+17cPiv5OjHeENewDJzanfXxQrOfE7Mi9O9y/ISf29Chb2UfmQnxz1hYHfRcy
+kiK7uX+SC6oOZWQVfReuRB+fL6PvRoMldoGevhvlx8cm0+m70Z5wecxC342h
+wGiNnb4HYyZTD88fHsgXquyirwfjJ7fO8dD3YKVBWSDm9+LMpR1TfN7gxcF0
+xz4vfS/mWz94wfsNeXH8+tQa8X7yQdegneek78N4an8D55N8WOPfr+P1Qz4o
+72apub8yP0aqbt300ffj75lmO+eR/Hh0eGpArO/HdEz8tc30A5htUSwH/QCC
+PxQV830jBXB656d1FfQDyDmS+aCUfhCrCn9Si/5B1NTXRt30g+hurBsN0A8i
+Ohmuz6NfAXOtseV1n5fN8IyI
+      "]]}, 
+    {RGBColor[0.560181, 0.691569, 0.194885], PointSize[
+     0.0055000000000000005`], AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxFlHloU1kUxt9EUcGFWm2ttVVrtXa3k1ptmi5fkpomadIkLy+LjkRtCVIq
+1LpgtVifylRmYCgiVBH1D+OCRv8QFbUovrpUq1ZoQRyXOurA6MyAGy51g3FQ
+v/vg8fi97557zz3nuzettlGO6CRJqv3y/v/9+ryoeJ79ZGD28CWmbz/QdX/n
+n+nkEchNHax3keNg1CnLS8njkXGyNpxLTkIFPJ+85BTkjk7MmU6eCuW2Na2K
+PA0veicZzOTp2ID3zgxyBhqyTPfEfJnAYEKP0LNhx4p0EzkX+sm6363kfCSU
+rtw3jVyAdcknFnnIP+Jsy/74HLIezUVtC4rJhTi/d8RpB3k2jNH49VPJRVDv
+jlREfeZgwo0OSU+ei+Orr1XNIhcj7DokifEGRH9t2jKFXILe6y2wkY3Y1fW4
+2EAuRfvPD+0zyWV4F41k1ZDLcaf/1XyRXwUO3Ph3h6gvEMnfVl7xnVXg6syC
+N2nUTdh8c8lV5qeakJp3okb4wYynraNN7L9qhvq8U6qkbkHyT1ceTaZuwaz2
+MTEn9Uq0ndZaMqlXYpizepTw3zykNel66A91Hjr3mD6kULdizUFLvZ26FZ3p
+xhZR3yrsOGbdk029CpKr7xTHSza4j60ayvlUG8Z+6Ou2ULdD3hm+VETdjiPu
+5RnCPw58bI/9JdZ3oK4hzybyq4bjnweGMurVyDo6ZGUJdSfuznD+PYm6E5dz
+bmWKfrtg6Kq+mUrdhcFPi/XMR6pBf9LLreXUazDDZwomUXdj6TBPCv2vuvFL
+va1X5O9BLHLuD55XePDRfGYi/aF6kPD4WX/id9Y8uKgUXhD+8SLqKDGwvvBi
+beRBD+dXvah726BnPTUvApFWdwLjZZRsMnbTP5CxsGNgSwHjZTQXSn7WR5MR
+e/2DzHwkH7qkxgVzGO9D6ZsDQdEvH55tLzvJ9TQfmpuiNpG/gnFtjs+sFxS0
+hiIj6R9VQeLQAR37pSl4dL8xcxzj/dg9alUS7xv4EYod3sjzq/qh26ft5vnU
+/Jjiiy5jv6QA5L64Q/GMDyBL+S0s+hnA+vOWJhEfQOriDq+4H4IwXxnyGYwP
+ou3onTjmpwYRmCuv5X2hBdF9Pbk3n/EhhPMiLrH/ENS6c37uRw2hp/ghxn/h
+/wAkqVTz
+      "]]}, 
+    {RGBColor[0.922526, 0.385626, 0.209179], PointSize[
+     0.0055000000000000005`], AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxFkwtMU2cYhutSmFjD5iVFXOeFi+u0oFIVlNtbSimF0svplQ5F8TadmUSH
+kEzH0RWNIFFQKwJzDNBNpmiFGCOJaSaKiYn1ggqKCXYWDBmLDG8RImPZ/m8n
+OTl5z/O97/f/3/nP3Lyt3PoPBALBuvH7n+e/14vk8peRI/HWPMV/L/CkpUWk
+szA9EV2927oDTEx/jI3rv5z9CdVPR1k+v8GdxfQMeLWV8TOJS/D6WmNsIPnn
+YL+v7hsb5YchvC3c/LuW6QjsPhDD/5zB9Dw0nP4o4Id0pqUozz9dF6lmej5c
+Dn/ROeIyLEyqetBP/misCtYrg/VML4KSK1AvovUthnd20MsTBqZjMBqSmGrX
+MS3HpLdLLoipfgmadhb/NkJ5S1HX6z27kPgy7PTfGBsmHovq3MTaIOJx2MLP
+bNZQ/nKE9t2T7qL6FXjz6MrZLZlMx6M2J8zRRvtJQOFtq99JOhGtc0XK97T/
+JGxKWGnYQTwZw85lz4NIA7KS8uwhVs8DJZqvbnxL81Sg+KeWlWEaxhXo6Hzd
+uYf8KUhrHIqTsPXzKTgSr3/uIq7EwKwnjnrKV+LXzbZSC+Wn4nvTgqVlxMe1
++y9pFPlV6C3sbnMQV6Hq2NBkXxrjaeAODabJWR4/rkfcPQ2Ur0ZI8TP/RPKr
+8VnTVOEl8qej4HZObjb503FO3KQWkl+DJNVItZjV8xroSmUBehXjGdh7vP3H
+96mMZ+DMI/sXbuKZmIAQ6T6m+UxYEjXCo6xeoMWHRQ/3bieuhfzprVtTyJ+F
+ZrW/y0f5WbjvijufQFyH0A7rpWziOpTW/FHvpnw9NMFla08Q12PG4HWvmrgB
+nzsLjVEsDwZU5L9KqaB6A4zntdU7GPcY8HiKs6uV+hsxPOfq5kDyGyG8ViWw
+0X6MmBYrHgtl8/MY0epudw7S/DlM3tgvv87mDQ49DvHoK/oeHHJco0IX+Tns
+Oej19FB/E+4oT+IZWy9MqPCpGh5QfxNEfaH93eQ3Iar2RXsjfV8zLosiojOp
+vxmj0v1BCjovZvwZftUnYefRY8bQ3TivnP4vC7hT67gq8lugKIm4WUN+C3Kj
+Jav72P/jsSD58ECeh/xWcAWWohimYYXsa5kxgPXjrUjYtPXtWsY9VpQ/vfjp
+//OzYXplZYaE+tswYOgIX0D9bRDNmnS/nvrbYJCcPPUL0wI7vktprVtB/e04
+uFw39obOux2Bu99pmml+dqyZltUxSPPLhnfXuyOd4/xvpVOfGw==
+      "]]}, 
+    {RGBColor[0.528488, 0.470624, 0.701351], PointSize[
+     0.0055000000000000005`], AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJw9k3tMk2cUh7tLCOLYmhSco90UJEtVilYEJir8WqFQoKVfL7SGeFnrMgEV
+datgZreOOQKMgfVSQB2KgG6abRmySZAsXVA2wLA/wAs6FQXRKBiQ6VQwzGWe
+0+RL8+uT5/Sc875fqD3P+MHLIpHI/vz57/v/z2iCEHjd21fvUL34ASkhroSf
+qyn7o1e5PzCgjrIYha1qZQ7nIDh+2emrraE8E5X+NfLVzGWo/3iZRdNAeTaK
+KkNFAvMw6CsmLzWxH47HwYtuZzN/F+eK4y4q2ZdDtv1UfwPzeah+0vVdLPcf
+gQVzN0sGv6EcibwLw2uk7C+EvM3xtvIIZSU0KmXj7sOUF2HbA0fWh1w/CsER
+uo4prr8YRRs8V/7k/URj9Ne9VePMYyB5mt/S4KUci6tpW4L+Yf4eDKqhZud+
+ykvwSDaabdxNOQ6D6lPPnFx/KdYLJYmjVZSX4fJA+0oD978cLS+JXXHcfzze
+lyY7JcwTEDLz/rUQnh9wPD7bGEHcDRhuXRyuYl+FeyfyxVLq161ClmzTfX+u
+p8bkTfSqa4mrMWtf/Fg9z7cCBa+s7eiift0rcD7WHH6aeSL8tAEj3cwTMX9C
+lX2XeRK+VRwyug4QT8JnW12lG5lrsH3Qf6ziIHENXouyh5UyT4b08JfX1rCf
+jJ5QT/+eQ8RTcPCHfscqOl93Cu79pRkIZF+LnPSpq/FcX4vre7zFZTx/Kqad
+ePpHI+8nFc+69ePBfN5pKF6Zo3nDQzwNfhlFx+dUEk/H0eqxJSfpvN3paBuw
+Lp3cRVyHtcdQpuX96GCr/ciey/3pcbslXfyQuR7KjpqJM8wzoD+QWj6D589A
+v+n1oSm+zwbYdzbHRNL7AQNujMhNTVzPAM265Q9+2vsi+wyYt6OicHoF+QLU
+Bsm0EOIQ8HedQuYpJ1/AscE7bfPZF/C733DuLPaNaH9kCvuUfSM2t6/7sY/3
+YcS5z3UPN9L99xmhiFa8U8jzmdAXldO7njJMGL/0veDi8zBB/uY+vYOyzwSJ
+YkFZAftm5Nu+mJPHvhnarpEpJ/tmxJQ/icli34zW7uZPNrBvwdbO0yez2bfA
+t6vg1iTvzwLHJqcwm+6Dz4LOGd5Xa3n+TNyQXa5bXEZ+Jqp0UpecuDsTorkN
++Tfp/vgyMRHXE42vybfit8jOIeVX5FvR2hOesJr3b0VJ05VtA6XkW1FtSQx4
+i/5PZENSX3fuwhLybTDf8Xh3FJNvgzg06Ljluf8v1d23Yw==
+      "]]}, 
+    {RGBColor[0.772079, 0.431554, 0.102387], PointSize[
+     0.0055000000000000005`], AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxFlHtMU2cYh7kkIs5GNDNjgehkUwEZ6IqAivIrreVWoJReUMfViaWFFVSc
+JrY7G5mRP7wjmxJoh6iIki26qRlICkgc1AEFhYUSQeVScBsXDZsDsrGM96PJ
+SfP0OW/Pe/nesyZDJ9vn5ODgkDp3/ff9/2c87NXN1db7E58I5n9A2/MyP8Mr
+4sXYPtv86NgksRuSZu1VrSPEb0OQ2V3Z2Unsjklt9zZ9C7EnMpM9xtseEL+H
+Uqe/3y9oIPaCs2SFMaeW+AM82JX0cTXz65CfNvq1vpnYG4tvXnxL3ETsi5WG
+4EMfPiT2Q01ntWaYsT80/T/kFXcQb8QAb9miqAHiTTC5tXxfwOr9CFkpmpfu
+L4n5uCSrKWsYJw4E11darWP92ozesRDNftafIMwUhG3SMh+Mek1XkpHFhyDL
++u30mjHiLbjCjz649A/irTjk8g5vFXv+NlRocE/cRxyKd30uv9GxfLcjtzc9
++oqNeAeKH+9exX9CHAafy0VbD7D7Af2B/JzT9nnmgPF/JnsqWT4CWJJG1p+k
+ejgB4mM3/JTznHw4Ro1HNq5lPhztvqZ+3SB5IerEVY0LXggeTgVFsOeLcGNv
+YJY/MSfCF3+qZEeZ34nYjpJ6Sy/5nciNfPFNUDt5MSp81eY7P5MXg5M4u1xg
+84yAV1pBXTD1n4vAxXz3iGvD5CNhCzWkLGM+EqENTVtSn5GPQsqO2usBLP8o
+2M6OTix5QT4ai06cNNmZj8bUnr+s2qfkY9AYHqBIZvnHoL2wPDmV1SdBmcgx
+41OaFydBo8iRv9CfWPw4Eikq6iIfi8DKG05Nv5KPw+d+Y3e+IubiMHWqZ2KY
+7Vs8PAILD6pof7h4FOe1VHzH9kuKbrnr2duWeYYU7ZeE6s/ovHBS6GO6+wIo
+H7MUhg0tjj2s/gS45Nzty6P6kYByof7ZLM2fS8Bhz3TLZuqvOQFPjvJW24Yo
+XoZc78qwNPKQIc7yUOFK55+T4dFQxq2O3yhehsElg1rvHopPRLax6qqS3idI
+hKur1zldK8UnQji9q7imn+ITIWlW1UmtFC9HafZQedcoxcthNbn1nvmd4uWY
+Hpg5biI2y5Ht6TMlYPuoQLq9Y2wd7TMUqP6y5Olrlr8CtVp1uD/9v1mBmTb1
+kYX3hRJFhsw9rSxeiai487vdiTkl/AQetmDqr1mJhsJ65zfsfKkQ8kuJkU/1
+QIXZvceWv6Z5cirY1dbD5TR/8xxLePe95+b/LySFyEU=
+      "]]}, 
+    {RGBColor[0.363898, 0.618501, 0.782349], PointSize[
+     0.0055000000000000005`], AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJxFlHtMk2cUxmvXADpglVVshobCnFbAS0FuAu3DrYiK9F4U3RgZdsnY1q1b
+DDrnR2Qbf8gQuzhQWAbMuBJEVzFBka1yURJdlLWhE8ZY5pzItWbK6BZkLOt5
+9yXNl1+f9znvOec97xdR/LamhM/j8YoXf/++/3s8ipBfig70J+9P9/2B+LMn
+H9oSiQPw6u+1tV/HEwuhLxKd+W4DsQh/dB4aErD1YliutHQ3sPWr8EBxc6ol
+hliCl3d3i/YqiCNx7LBbbl5DvAbe3kalMJ14LU7HWROO+hNL0VcUdXw906Mw
+2P134YMA4hg4rZeXr58u8fFGKPo6vGFLSd+MzPDxgRDml6G5L6wh9wXiWAxy
+Pd+HPkMch02eu/b/12+BtCpfGMHyiYd5n9v1HNMTsMdi0U0tI05E+3zLPECc
+BJXxlhhpxMl4Gm25sTKWeCvqNGuD7m4mTsEGz0TH6iTiVIxpBsvVm4jTYDx4
+xSWJI5ajq0Ze/QXbTwEjP3HuyZ/UDyCoKsk9POtjDrCFDtzzTJKeDvOp6/bz
+TtLTEaTzJt9n/cyAMObqJ1Uv+eJzGQiskLa62X6Z2F8f1h7pJX8mTCOT0SX3
+yZ+FUVl99akJ0rPgUPtF/zpFejaqHp++ePFFip+NT+cPvqWUU3wlDOVtQ5VU
+P6eEck7gtLH+5UDTNTPpWaD4OTgU1NW4epTib0NgePPgYTpfbhsKf7Z1fsXy
+z8V1P9G9C+tIz4Vb4KnuYP3fDr7kdUk/zT+3HefnPrw1kkr6Dix/apq20vlx
+O3Bh2buvtMpI34m9fbOyJxtJ34n3LHX8BZZ/Hm5PjQ01UjwuD5XZlTMH2P3Y
+BVPgG0tqaN65XQjJ5jfejCQ9HylLe8sX/EjPR43dpqhg9avQNBwmdVL9UMHS
+mVjTRvVzKqy7/cM3Pwp87FBBmxV8R5xC8dUoNXw+rkogvxpzjji7K4r8aozJ
+t5yroPwdi+v9Ya2PIL8G0W3TlhN0/6FBaumktWwF+TVwve+SDtM8OjSQ5Fy6
+0/48+bXw/+3GaCHlBy0ex+a1VrD8tbDNhiQf+Yv8WpQ5Mx69w85XB/233mAp
+MXR4s13bVML8OqyUhcvP0vk4dPjy0hn/hK3k16O2/+SzxTSf0CNgZCTtGvWf
+02Mg/HJwGtXn0ON4bFTZZ2LyG8BrKahfQfMOAxpeawqQsftmwMc8e2kn6Q4D
+Qo82uzXUX54R5odC0xLWfyPEgnOP6mh+OCN6e6RHflpF+xtxoivQ1MO+twWY
+URivlonIX4AJs/dYBH2PuAJ8pJj4YHzR/w/5XKTr
+      "]]}, 
+    {RGBColor[1, 0.75, 0], PointSize[0.0055000000000000005`], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJw9lAtMU1cYx+tgAzaWCuLWCREmCAxQVwWKyOPfUh4FLKVvBkwlA1aewW0w
+geh1k8Hagcok4HMkKNtYjQbihlW3ErLRjXUhICpSHO6hIQxK1M1OkD1iv3uT
+m5vf/Z1/vnPu+e55uaBSXvgUh8Mp/O/+//nkWkg8lRtz/82SYqHzBXS7PWXf
+6IndETPQe7btQ+KV4ObNdNpY7wOxz6OJVi0xD6bx9J35RcR+8A6ZnM9PJw7A
+1I6TCYp9RU5eh3mPvcExCvJBaF7nueOFWuJg9PS42AejiEMx5xlYv2mK8mF4
+bovw4CoD+QhMFafUXraS3wjr4N0qPjvfV7HYdu1+Bjuej0fv//H46nEavxmj
+K7m8eiHxFliD+IythTgSRo/KrrRC4ig0p8U2lP1GHI2W5zf1P/ySWIDodm59
+g4g4BpMRlxsjE4i3Yvq73YuOGOJYxDte7DLGEW9Da4g4LOACcRy+9uL7daUT
+x8Mu4cc1ZxEn4G5y2dokN+JERFTe6BNFEANfFbbci3pc+IQZ4Hy99BOdxckc
+Idb7+3WceUheCOudUOHAX+RFiOzMbMC35EUYEH1xcgWN5yThwoI+fmiBfBKG
+s27dbNpA9cUo7So6NOftZEYM4fXSit4ZyifDbabvnyh38skofr28+ZKS8ikw
+Npw79KuGfArsOaHGAD35VATvH/YVc5z7y6TCS9T6xh22f9PQX+/a8gz1G5OG
+0PD9N0vZfpTgtbUTT0ekkpdgX9Kzhw8zlE9HpMZdsCuZfDre0U7//hbrM9Dm
+e9ReEUs+A0ctt67Nsz4TZe1ukbXUz0wm5jov8mbZft8O+7BVb5CS344UQ0f1
+zo9oflKc/WBNdO/b5KWwrKm25YZQPgvqY+XhH+8hn4WRz9Sm2SbyMlSNVIzN
+BzkZMjgsdRNX6P9gZChtspq72531zDIYjl206gIon41fltfzqxopnw3F6VWu
+Pe6Uz0aNYZh3osHJ5mys7hMLrnhQXo5p7udxme9RXo4NpinHkIDyclxaljSb
+aL/McizqlmsO3qb1KzAuCLzxPc0XCth/nk02/U39oIAxt9TDn7xZgZHE24KN
+r1B9JZbGHPzlOsorYVUOjb5E5wGjRIfL0mAHm1eirrZgxU/seaGC69jEHocf
+5VXIm2XG84kZFXqudwdO1dD3U+G83uLTd4rmr0bF1m28lnNOhhoPRpk/H7D1
+1ZAIfjgyRP+7WY2JqB8lrOdoMCPwCrvaTXkNdr3bZZNF0/o1GN9czZ1UUV4D
+S5nA+1Mu1dfinq+Lf3wB5bVYOtHeOHCE8losFJTIF6m/zVpkTNpWq3RUPwd7
+beHSkjxafw76uQeOo7xY+C/mCb92
+      "]]}, 
+    {RGBColor[0.647624, 0.37816, 0.614037], PointSize[0.0055000000000000005`],
+      AbsoluteThickness[1.6], PointBox[CompressedData["
+1:eJw9VQlQ1HUUJjziGAETL0BF4ygkXdxF2bX0Q85Frr1Yjl0QRAgPUDACBeav
+DVA6EIcoAToMqSgIXogQkNsIuUMDbqbQEIR4YAgmKEyJJNn0e+zMzs633+/7
+vfe+997/vzIqQbpDX09PL+Xt97/f/z+jm6d+eRomzI91ZX/AtUKWkLvvU4YN
+kHUjXZHUT7wZrDIv5p5I3sGwOcKH+c1P2yMZXgKT5Muvt+VvZ9gKYp5ULyuA
+eGuIS/6+bP/5NoZXoakhU74rhrANLmfo36l3p/N2UJi0Ctxqohj+AL/fG5wz
+/ZTycUDZh8oBXQdhR7xIPtT16zXKfw2mhvcOXxugfHhQ5q99bHeJ7nNCSITk
+0Wgv1bMOqadu2lxKJz0fGbXVHl+XRzMsQFHSq+HpMuKdYasYbxHWEL8eL2uc
+RGPVlP8GTL85PlJ/luK7YPPSMrHbd6QXQrZXaW1cTfFFMNSv8r6xk/iNMFr8
+bY+zIIbhj+GyZEdCeDnxn6BOu3aizoX0m+AGr4R3Z/BmWIo/Kp8spfNAR4FZ
+tF4cy4cDvEURit4s8s8Vf9Rkdy9oJN4VmdkZ+elNpN+Cxs+6/Ox3s/PcFqS5
+Zdq/biC9Gw4aPRHFtLF8OTcs18Ytnd1EvDu4BqMTG44z/zl3zOKuequKqT4P
+FPAfpv3WQ/d7wML+0NRgN/XLE2M864fNj1l9nCcsTrcNLTxBvBfMRKrBEVO6
+3wuW921OrbagfnijfWBZidUrhjlvHJu9LPbhcvJLDJHDpEArZPVyYqhLrYr/
+GiTeB18p92T7pBHvA4cDzRtafInfihL5vpdnpij+Vkz5OHrqfqb++0Lw3grx
+s+uk90XF4Bwj51yaHz8U3PyiMH0R6f1gGlLhyaul/fCHyX7Zg8Yahjl/iGpt
+Di6cT/UHYN4zM12ngPoXgCex1Y7NLeR/IFbi4ERcFMMIxP7otWsShOR3IOJf
+9vbHdTKsCcTqFp1fZyX1R4LWdWnX2wpIL0GS/5rC5CtUjwTWgdqIlLusHo0E
+c/vVBikLqD4p9vQ5OPdGMr8ghdZl45s/KxnPSVHfooyZEDFeI8WdoiddXjP7
+JkNk09EreXUMQwaDIiv3AOI5GZKddNpjeQxr3p7v6xjdOUL5y/HNDz6Pjmxi
+fkEO3e4LB1KHKL4c8cPf99+iedfIwU9MHvccI38VeG7ucdGST3oF1punv59I
+zztOgZGyWQMFRxjWKOB0rnBul5DmLwiLyo5ezUxiPIJgH6R03kTxuCCYpq3g
+7Ukj/4LwwPVeZfd8mh8lqnIMlwr/Yf2HEhtjTs+zs6T4Sphe891u2sfiaZQo
+lvre3FJA8xmMkniP1PPx5F8wbl3g88d/on0KRuKZvGCZP9UfjNQGs/Nfqsi/
+ENh1VvgM0n4gBOcMYvmrk2jfQ5ByuPTk/CGGNSFIfH59Wjvz/AjF6b7dhpIh
+qj8UJ1vvd5fO7EMoDLxtJ3iOpA9F77bji8eNKf8wTNTkLlbnUPww2N4V3y4L
+ovhhEGQ9q7udRPMbBl33I7kdj+ZfhZ68VQG7nCi+CldzMmZFKGn+VTAWSqra
+z5JeBUsH6TttRaRXY5VzefaSFzS/ang2VrWE0/uCU8NkYLI+Vkzzq0bhj5Oa
+i4tIH447rTk5fiejXf8F8WwWBQ==
+      "]]}, {}}, {}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0., 7.283914019202829*^6},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  ImageSize->{858.1818181818164, Automatic},
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0., 120.}, {7.554560779774267*^6, 1.2967495991203044`*^7}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.7409288171797686`*^9, 3.740928832992029*^9}, 
+   3.7409289995255413`*^9},ExpressionUUID->"e4d64a98-0124-46cc-bc1b-\
+8af764b9ca02"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"allpoints", "[", 
+   RowBox[{"[", "9", "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7409292295487404`*^9, 
+  3.740929261784357*^9}},ExpressionUUID->"4a56c2f2-ae35-4c35-adac-\
+178864b32b31"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.009166666666666668], 
+     AbsoluteThickness[1.6], PointBox[CompressedData["
+1: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
+YeGqcqXv/wBtpS27
+      "]]}, {}}, {}, {}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0., 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0., 189.}, {0, 1.2967495991203044`*^7}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.7409292326352997`*^9, 
+  3.740929262438629*^9}},ExpressionUUID->"4c5776ab-04f4-4433-adcf-\
+729b4ec9f63b"]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.1 Inherited,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 200, 4, 32, "Input",ExpressionUUID->"47d2ed0c-e77a-41ba-acb0-8fadf8eeec2c"],
+Cell[761, 26, 181, 4, 32, "Input",ExpressionUUID->"3bc95c76-0a01-471f-83d6-dead6f3eb7a1"],
+Cell[945, 32, 9671, 282, 1364, "Input",ExpressionUUID->"11d71ee7-f17c-40a1-9963-c70825992d4c"],
+Cell[10619, 316, 4336, 110, 608, "Input",ExpressionUUID->"7eb362dc-f22c-41da-a42d-99b5ab799167"],
+Cell[CellGroupData[{
+Cell[14980, 430, 8061, 188, 561, "Input",ExpressionUUID->"94e66781-6066-4bf6-9d7d-baef37086e42"],
+Cell[23044, 620, 390, 7, 23, "Print",ExpressionUUID->"020c3268-b672-4685-90dc-8a98f90597a6"],
+Cell[23437, 629, 662, 13, 23, "Message",ExpressionUUID->"6b9593f7-7603-4485-95c5-0de1caef3f8c"],
+Cell[24102, 644, 660, 13, 23, "Message",ExpressionUUID->"0b7bf12c-208d-46c9-9d10-6ea42037d403"],
+Cell[24765, 659, 662, 13, 23, "Message",ExpressionUUID->"459dd83b-e972-4e60-81bf-81f9f982a81c"],
+Cell[25430, 674, 656, 13, 23, "Message",ExpressionUUID->"2924192e-62fc-4097-8633-474f1ced177b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26123, 692, 1990, 49, 99, "Input",ExpressionUUID->"3b66b238-cc06-40d5-8a12-f25c34e7aae5"],
+Cell[28116, 743, 1722, 36, 664, "Output",ExpressionUUID->"0674cd72-468b-42ff-8f04-8b4e7bd0aa5c"],
+Cell[29841, 781, 1959, 54, 816, "Output",ExpressionUUID->"691c99b8-ae69-4e39-8201-327230d6b106"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31837, 840, 1675, 35, 688, InheritFromParent,ExpressionUUID->"f1dcbd8a-8c5e-4630-9b02-74980970e6f3"],
+Cell[33515, 877, 2794, 69, 793, "Output",ExpressionUUID->"798e677b-977c-441e-8916-08776684fada"],
+Cell[36312, 948, 2840, 46, 551, "Message",ExpressionUUID->"1db903bb-bc73-43d7-9258-4357a873fe90"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39189, 999, 152, 3, 32, "Input",ExpressionUUID->"4c67eae6-c305-4e1a-83e0-9b2a869ac24e"],
+Cell[39344, 1004, 7178, 141, 487, "Output",ExpressionUUID->"a5585d8c-ff63-49c3-8cd7-b3e680c73091"]
+}, Open  ]],
+Cell[46537, 1148, 1948, 41, 99, "Input",ExpressionUUID->"6328934b-1f66-4f98-b31e-89875ca697c5"],
+Cell[CellGroupData[{
+Cell[48510, 1193, 152, 3, 32, InheritFromParent,ExpressionUUID->"0ab01150-95e4-4183-9a1a-0d1799cd66ee"],
+Cell[48665, 1198, 7077, 139, 557, "Output",ExpressionUUID->"fd9691d6-6697-43d5-abca-d420d3a76aa7"],
+Cell[55745, 1339, 78120, 1149, 558, "Message",ExpressionUUID->"edb3094e-d759-4983-9065-d62ce3baa25d"]
+}, Open  ]],
+Cell[133880, 2491, 154, 3, 32, "Input",ExpressionUUID->"ada76223-8958-476d-89f9-2e41a3d23f19"],
+Cell[CellGroupData[{
+Cell[134059, 2498, 653, 17, 55, "Input",ExpressionUUID->"c7fec143-355a-45fd-bd7c-f37b214b2144"],
+Cell[134715, 2517, 193, 4, 36, "Output",ExpressionUUID->"b4ecdcd0-ca01-4e79-92b2-8ea2eee01dca"]
+}, Open  ]],
+Cell[134923, 2524, 930, 26, 55, "Input",ExpressionUUID->"34a13428-393f-4a57-8317-e61269b0a01f"],
+Cell[135856, 2552, 1330, 37, 55, "Input",ExpressionUUID->"59243af0-2fc9-4be3-8f58-9978ae268bbf"],
+Cell[CellGroupData[{
+Cell[137211, 2593, 157, 3, 32, "Input",ExpressionUUID->"1f326b01-2d40-47c5-811d-c128ffa07e0f"],
+Cell[137371, 2598, 1083, 32, 69, "Output",ExpressionUUID->"95b16af7-5b6a-456c-9e87-0125ec60d23f"]
+}, Open  ]],
+Cell[138469, 2633, 131, 3, 32, "Input",ExpressionUUID->"ed2eb486-5c59-4da4-aca6-038a8ff5e12a"],
+Cell[CellGroupData[{
+Cell[138625, 2640, 247, 5, 32, "Input",ExpressionUUID->"148741c1-6a74-4508-938b-455d1e99d513"],
+Cell[138875, 2647, 14268, 257, 601, "Output",ExpressionUUID->"e4d64a98-0124-46cc-bc1b-8af764b9ca02"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[153180, 2909, 249, 6, 32, "Input",ExpressionUUID->"4a56c2f2-ae35-4c35-adac-178864b32b31"],
+Cell[153432, 2917, 3856, 79, 254, "Output",ExpressionUUID->"4c5776ab-04f4-4433-adcf-729b4ec9f63b"]
+}, Open  ]]
+}
+]
+*)
+
